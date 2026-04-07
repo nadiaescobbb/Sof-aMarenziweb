@@ -1,494 +1,623 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="scroll-smooth" lang="es">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Lola Cuts · Peluquería</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400;1,6..72,700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sofía Marenzi | Cosmetología Profesional</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#4c644f",
+        "primary-container": "#ceeacf",
+        "on-primary": "#ffffff",
+        "on-primary-container": "#273e2b",
+        "secondary": "#685d4c",
+        "secondary-container": "#f1e0ca",
+        "on-secondary": "#ffffff",
+        "surface": "#fbf9f3",
+        "surface-bright": "#fbf9f3",
+        "surface-dim": "#dbdad4",
+        "surface-container": "#efeee8",
+        "surface-container-low": "#f5f4ed",
+        "surface-container-high": "#eae8e2",
+        "surface-container-lowest": "#ffffff",
+        "surface-container-highest": "#e4e2dc",
+        "on-surface": "#1b1c18",
+        "on-surface-variant": "#434842",
+        "outline": "#737972",
+        "outline-variant": "#c3c8c0",
+        "inverse-surface": "#30312d",
+        "inverse-on-surface": "#f2f1ea",
+        "error": "#ba1a1a",
+      },
+      fontFamily: {
+        "headline": ["Noto Serif", "serif"],
+        "body": ["Manrope", "sans-serif"],
+        "label": ["Manrope", "sans-serif"],
+      },
+      borderRadius: {
+        DEFAULT: "1rem",
+        lg: "2rem",
+        xl: "3rem",
+        full: "9999px",
+      }
+    }
+  }
+}
+</script>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --sage: #4c644f;
+    --sage-light: #ceeacf;
+    --cream: #fbf9f3;
+    --warm: #685d4c;
+  }
 
-:root {
-  --cream:      #fff8f0;
-  --bone:       #f5ede0;
-  --blush:      #e8d5c4;
-  --terracota:  #924621;
-  --terracota2: #b15e37;
-  --bark:       #54433c;
-  --espresso:   #1e1b14;
-  --outline:    #87736a;
-}
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
 
-html { -webkit-font-smoothing: antialiased; }
+  .editorial-shadow {
+    box-shadow: 0 40px 60px -20px rgba(27, 28, 24, 0.08);
+  }
 
-body {
-  background: var(--cream);
-  color: var(--espresso);
-  font-family: 'Manrope', sans-serif;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
-  position: relative;
-}
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    background-size: 180px;
+    pointer-events: none;
+    border-radius: inherit;
+  }
 
-/* ── GRAIN ── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  opacity: 0.035;
-  pointer-events: none;
-  z-index: 100;
-}
+  /* Fade-in animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up { animation: fadeUp 0.8s ease both; }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+  .delay-5 { animation-delay: 0.55s; }
 
-/* ── FONDO DECORATIVO ── */
-.bg-circle {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-}
-.bg-circle-1 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(177,94,55,0.10) 0%, transparent 70%);
-  top: -150px; right: -150px;
-}
-.bg-circle-2 {
-  width: 400px; height: 400px;
-  background: radial-gradient(circle, rgba(146,70,33,0.07) 0%, transparent 70%);
-  bottom: -100px; left: -120px;
-}
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
-/* ── WRAPPER ── */
-.page {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 420px;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  padding: 0 24px 64px;
-}
+  /* FAQ accordion */
+  .faq-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+  }
+  .faq-body.open {
+    max-height: 300px;
+  }
+  .faq-icon {
+    transition: transform 0.3s ease;
+  }
+  .faq-item.open .faq-icon {
+    transform: rotate(180deg);
+  }
 
-/* ── HEADER ── */
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 64px;
-  padding-bottom: 48px;
-  text-align: center;
-}
+  /* Nav scroll effect */
+  .nav-scrolled {
+    box-shadow: 0 1px 0 rgba(27,28,24,0.06);
+  }
 
-.monogram-ring {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  margin-bottom: 28px;
-}
+  /* Service card hover */
+  .service-card {
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+  }
 
-.monogram-ring svg.ring {
-  position: absolute;
-  inset: 0;
-  animation: spin 18s linear infinite;
-}
+  /* Step hover */
+  .step-icon {
+    transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .step-card:hover .step-icon {
+    transform: scale(1.1);
+    background-color: #4c644f;
+    color: white;
+  }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+  /* Mobile menu */
+  #mobile-menu {
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  #mobile-menu.open {
+    max-height: 300px;
+    opacity: 1;
+  }
 
-.monogram-inner {
-  position: absolute;
-  inset: 8px;
-  border-radius: 50%;
-  background: var(--bone);
-  border: 1px solid rgba(146,70,33,0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.monogram-letter {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-size: 1.8rem;
-  font-weight: 300;
-  color: var(--terracota);
-  line-height: 1;
-}
-
-h1 {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 2.8rem;
-  letter-spacing: -0.02em;
-  color: var(--espresso);
-  line-height: 1;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  font-size: 0.62rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--outline);
-  font-weight: 500;
-}
-
-/* ── SEPARADOR ── */
-.divider {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 32px;
-}
-.divider-line { flex: 1; height: 1px; background: var(--blush); }
-.divider-diamond {
-  width: 5px; height: 5px;
-  background: var(--terracota);
-  transform: rotate(45deg);
-  flex-shrink: 0;
-  opacity: 0.5;
-}
-
-/* ── LINKS ── */
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 32px;
-}
-
-.link-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 24px;
-  text-decoration: none;
-  font-family: 'Manrope', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  border-radius: 2px;
-  transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.link-btn-left {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.link-icon {
-  width: 20px; height: 20px;
-  opacity: 0.7;
-  flex-shrink: 0;
-  transition: opacity 0.3s;
-}
-
-.link-arrow {
-  font-size: 0.9rem;
-  opacity: 0.4;
-  transition: transform 0.3s, opacity 0.3s;
-}
-
-.link-btn:hover .link-arrow {
-  transform: translateX(4px);
-  opacity: 0.8;
-}
-
-.link-btn:hover .link-icon { opacity: 1; }
-
-/* Botón primario */
-.btn-primary {
-  background: linear-gradient(135deg, var(--terracota) 0%, var(--terracota2) 100%);
-  color: white;
-  box-shadow: 0 4px 20px rgba(146,70,33,0.25);
-}
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 32px rgba(146,70,33,0.32);
-}
-.btn-primary .link-icon { opacity: 0.85; filter: brightness(10); }
-
-/* Botones secundarios */
-.btn-secondary {
-  background: var(--bone);
-  color: var(--bark);
-  border: 1px solid var(--blush);
-}
-.btn-secondary:hover {
-  background: white;
-  border-color: rgba(146,70,33,0.2);
-  color: var(--terracota);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-}
-
-/* ── HORARIOS ── */
-.horarios {
-  background: var(--bone);
-  border: 1px solid var(--blush);
-  border-radius: 2px;
-  padding: 32px 28px;
-  margin-bottom: 28px;
-  position: relative;
-  overflow: hidden;
-}
-
-.horarios::before {
-  content: 'horarios';
-  position: absolute;
-  bottom: -12px;
-  right: 16px;
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-size: 4rem;
-  color: rgba(146,70,33,0.05);
-  pointer-events: none;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.horarios-title {
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-size: 1.15rem;
-  font-weight: 400;
-  color: var(--espresso);
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.horarios-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--blush);
-}
-
-.horarios-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(218,193,184,0.4);
-  font-size: 0.78rem;
-}
-.horarios-row:last-child { border-bottom: none; padding-bottom: 0; }
-
-.horarios-dia {
-  color: var(--bark);
-  font-weight: 400;
-}
-.horarios-hora {
-  color: var(--espresso);
-  font-weight: 600;
-  font-size: 0.72rem;
-  letter-spacing: 0.05em;
-}
-
-.horarios-nota {
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid var(--blush);
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--outline);
-  text-align: center;
-}
-
-/* ── FOTO ── */
-.foto-wrap {
-  border-radius: 2px;
-  overflow: hidden;
-  aspect-ratio: 4/3;
-  margin-bottom: 28px;
-  position: relative;
-}
-
-.foto-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(0.15) contrast(1.05);
-  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.foto-wrap:hover img { transform: scale(1.03); }
-
-.foto-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(30,27,20,0.3) 0%, transparent 50%);
-}
-
-.foto-caption {
-  position: absolute;
-  bottom: 16px;
-  left: 20px;
-  font-family: 'Newsreader', serif;
-  font-style: italic;
-  font-size: 0.85rem;
-  color: rgba(255,248,240,0.8);
-  letter-spacing: 0.05em;
-}
-
-/* ── FOOTER ── */
-footer {
-  margin-top: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding-top: 16px;
-}
-
-.footer-brand {
-  font-size: 0.6rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--blush);
-}
-
-.footer-brand a {
-  color: var(--terracota);
-  text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-.footer-brand a:hover { opacity: 1; }
-
-/* ── ANIMACIONES DE ENTRADA ── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-header { animation: fadeUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) both; }
-.divider { animation: fadeUp 0.8s 0.1s cubic-bezier(0.23, 1, 0.32, 1) both; }
-.links .link-btn:nth-child(1) { animation: fadeUp 0.7s 0.15s cubic-bezier(0.23, 1, 0.32, 1) both; }
-.links .link-btn:nth-child(2) { animation: fadeUp 0.7s 0.22s cubic-bezier(0.23, 1, 0.32, 1) both; }
-.links .link-btn:nth-child(3) { animation: fadeUp 0.7s 0.29s cubic-bezier(0.23, 1, 0.32, 1) both; }
-.horarios { animation: fadeUp 0.7s 0.36s cubic-bezier(0.23, 1, 0.32, 1) both; }
-.foto-wrap { animation: fadeUp 0.7s 0.43s cubic-bezier(0.23, 1, 0.32, 1) both; }
-footer { animation: fadeUp 0.7s 0.5s cubic-bezier(0.23, 1, 0.32, 1) both; }
+  /* Floating dot decoration */
+  .dot-grid {
+    background-image: radial-gradient(circle, #4c644f22 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 </style>
 </head>
-<body>
 
-<div class="bg-circle bg-circle-1"></div>
-<div class="bg-circle bg-circle-2"></div>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
 
-<div class="page">
+<!-- ── NAV ── -->
+<nav id="navbar" class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md transition-shadow duration-300">
+  <div class="flex justify-between items-center px-6 md:px-10 py-4 max-w-7xl mx-auto">
+    <a href="#" class="font-headline text-2xl font-semibold text-primary">Sofía Marenzi</a>
 
-  <!-- HEADER -->
-  <header>
-    <div class="monogram-ring">
-      <!-- Anillo giratorio con texto -->
-      <svg class="ring" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="40" cy="40" r="37" stroke="rgba(146,70,33,0.2)" stroke-width="0.8"/>
-        <path id="textCircle" d="M 40,40 m -32,0 a 32,32 0 1,1 64,0 a 32,32 0 1,1 -64,0"/>
-        <text font-family="Manrope, sans-serif" font-size="6.5" fill="rgba(146,70,33,0.45)" font-weight="500" letter-spacing="3.8">
-          <textPath href="#textCircle">RESISTENCIA · CHACO · ARGENTINA · </textPath>
-        </text>
-      </svg>
-      <div class="monogram-inner">
-        <span class="monogram-letter">L</span>
+    <div class="hidden md:flex items-center gap-10">
+      <a class="font-label text-xs tracking-widest text-secondary hover:text-primary transition-colors duration-300 uppercase" href="#servicios">Servicios</a>
+      <a class="font-label text-xs tracking-widest text-secondary hover:text-primary transition-colors duration-300 uppercase" href="#testimonios">Testimonios</a>
+      <a class="font-label text-xs tracking-widest text-secondary hover:text-primary transition-colors duration-300 uppercase" href="#faq">FAQ</a>
+      <a href="https://wa.me/5491100000000" class="bg-primary text-on-primary px-8 py-3 rounded-full font-label text-sm tracking-wide hover:bg-on-primary-container hover:text-primary transition-all duration-300 hover:scale-105 active:scale-95 inline-block">
+        Reservar turno
+      </a>
+    </div>
+
+    <button id="menu-toggle" class="md:hidden text-primary p-1">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden px-6 pb-4 bg-surface/95 backdrop-blur-md">
+    <div class="flex flex-col gap-4 pt-2">
+      <a class="font-label text-sm tracking-widest text-secondary uppercase py-2 border-b border-outline-variant" href="#servicios" onclick="closeMobileMenu()">Servicios</a>
+      <a class="font-label text-sm tracking-widest text-secondary uppercase py-2 border-b border-outline-variant" href="#testimonios" onclick="closeMobileMenu()">Testimonios</a>
+      <a class="font-label text-sm tracking-widest text-secondary uppercase py-2 border-b border-outline-variant" href="#faq" onclick="closeMobileMenu()">FAQ</a>
+      <a href="https://wa.me/5491100000000" class="bg-primary text-on-primary px-8 py-3 rounded-full font-label text-sm text-center mt-2">Reservar turno</a>
+    </div>
+  </div>
+</nav>
+
+<main class="pt-20 overflow-hidden">
+
+  <!-- ── HERO ── -->
+  <section class="relative px-6 md:px-10 py-16 md:py-28 max-w-7xl mx-auto">
+
+    <!-- Background decoration -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-secondary-container/25 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute top-1/2 right-1/4 w-40 h-40 dot-grid opacity-30 pointer-events-none"></div>
+
+    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20 relative z-10">
+
+      <!-- Text -->
+      <div class="flex-1 space-y-7">
+        <span class="fade-up delay-1 font-label text-xs tracking-[0.22em] text-primary uppercase block">Estética facial · Buenos Aires</span>
+
+        <h1 class="fade-up delay-2 font-headline text-5xl md:text-6xl lg:text-7xl leading-[1.08] text-on-surface tracking-tight">
+          Tu mejor versión<br>empieza por<br><span class="italic text-primary font-light">tu piel</span>
+        </h1>
+
+        <p class="fade-up delay-3 text-on-surface-variant text-lg max-w-md leading-relaxed font-light">
+          Cuidado facial profesional y personalizado. Recuperá la luminosidad que tu rostro merece, en un espacio de calma absoluta.
+        </p>
+
+        <div class="fade-up delay-4 flex flex-col sm:flex-row gap-4 pt-2">
+          <a href="https://wa.me/5491100000000" class="bg-primary text-on-primary px-10 py-4 rounded-full font-medium text-base hover:bg-on-primary-container hover:text-primary transition-all duration-300 editorial-shadow text-center hover:scale-105 active:scale-95">
+            Reservar mi turno
+          </a>
+          <a href="#servicios" class="bg-surface-container-low text-on-surface px-10 py-4 rounded-full font-medium text-base hover:bg-surface-container transition-all duration-300 text-center border border-outline-variant">
+            Ver tratamientos
+          </a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="fade-up delay-5 flex items-center gap-6 pt-4">
+          <div class="flex items-center gap-2">
+            <div class="flex">
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <span class="text-sm text-on-surface-variant font-light">+80 reseñas</span>
+          </div>
+          <div class="w-px h-5 bg-outline-variant"></div>
+          <span class="text-sm text-on-surface-variant font-light">Cosmetóloga profesional</span>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="flex-1 relative w-full max-w-sm md:max-w-none">
+        <div class="relative aspect-[4/5] rounded-xl overflow-hidden editorial-shadow grain">
+          <img
+            alt="Sofía Marenzi — Cosmetóloga profesional"
+            class="w-full h-full object-cover grayscale-[15%] brightness-105 hover:scale-105 transition-transform duration-700"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtqKeHq5BeWQmXKJltlUvDq95H1SC30pGLHWCL-nGZRpY0eUymShIBjV6221V14m0TkloIBNBmCn6wOjechVQ-fuC9F0k7-UfRKEQHCTKvZBKAcXYfPNTDwAKUAHU9mYHEDEq_p7ChC-Vu66xKrz4bXZjtaa8IBa5gDJ5lm5Be3cEamdVjZujXPi2SZ327r6_3Fb6l2EZNUP_K2vKan5AvSiuCjCwJ0J9LdOayC0cbU6XoY0jtFjRWNea7UrIurbZnIwdTrex8MuA"
+          />
+          <!-- Overlay gradient -->
+          <div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"></div>
+        </div>
+
+        <!-- Floating quote card -->
+        <div class="absolute -bottom-6 -left-6 bg-surface-container-lowest/90 backdrop-blur-xl p-6 rounded-lg editorial-shadow hidden md:block max-w-[220px] border border-outline-variant/30">
+          <p class="font-headline italic text-primary text-base leading-snug">"La piel es el reflejo de nuestro bienestar interior."</p>
+        </div>
+
+        <!-- Floating stat -->
+        <div class="absolute -top-4 -right-4 bg-primary text-on-primary p-4 rounded-full editorial-shadow hidden md:flex flex-col items-center justify-center w-20 h-20">
+          <span class="font-headline text-xl font-bold leading-none">5+</span>
+          <span class="font-label text-xs leading-tight text-center">años exp.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── PROCESO ── -->
+  <section class="bg-surface-container-low py-20 md:py-28">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <div class="text-center mb-16 reveal">
+        <span class="font-label text-xs tracking-[0.22em] text-secondary uppercase">Metodología</span>
+        <h2 class="font-headline text-4xl md:text-5xl mt-3 tracking-tight">Un proceso diseñado para vos</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        <div class="step-card group flex flex-col items-center text-center space-y-5 reveal">
+          <div class="step-icon w-18 h-18 w-[72px] h-[72px] bg-surface-container-lowest rounded-full flex items-center justify-center text-primary editorial-shadow">
+            <span class="material-symbols-outlined text-4xl">stethoscope</span>
+          </div>
+          <div>
+            <span class="font-label text-xs tracking-widest text-secondary uppercase block mb-2">Paso 01</span>
+            <h3 class="font-headline text-2xl mb-3">Diagnóstico gratuito</h3>
+            <p class="text-on-surface-variant font-light leading-relaxed text-sm">Analizamos tu tipo de piel y necesidades reales antes de comenzar cualquier tratamiento. Sin compromiso.</p>
+          </div>
+        </div>
+
+        <div class="step-card group flex flex-col items-center text-center space-y-5 reveal" style="transition-delay:0.1s">
+          <div class="step-icon w-[72px] h-[72px] bg-surface-container-lowest rounded-full flex items-center justify-center text-primary editorial-shadow">
+            <span class="material-symbols-outlined text-4xl">spa</span>
+          </div>
+          <div>
+            <span class="font-label text-xs tracking-widest text-secondary uppercase block mb-2">Paso 02</span>
+            <h3 class="font-headline text-2xl mb-3">Tratamiento a medida</h3>
+            <p class="text-on-surface-variant font-light leading-relaxed text-sm">Elegimos principios activos y técnicas específicas para tu piel. Cada sesión es única.</p>
+          </div>
+        </div>
+
+        <div class="step-card group flex flex-col items-center text-center space-y-5 reveal" style="transition-delay:0.2s">
+          <div class="step-icon w-[72px] h-[72px] bg-surface-container-lowest rounded-full flex items-center justify-center text-primary editorial-shadow">
+            <span class="material-symbols-outlined text-4xl">verified_user</span>
+          </div>
+          <div>
+            <span class="font-label text-xs tracking-widest text-secondary uppercase block mb-2">Paso 03</span>
+            <h3 class="font-headline text-2xl mb-3">Seguimiento post</h3>
+            <p class="text-on-surface-variant font-light leading-relaxed text-sm">Te armamos una rutina simplificada para que los efectos se prolonguen en tu hogar.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICIOS ── -->
+  <section class="py-20 md:py-28 px-6 md:px-10 max-w-7xl mx-auto" id="servicios">
+
+    <div class="flex flex-col md:flex-row justify-between items-end mb-14 gap-8 reveal">
+      <div class="max-w-xl">
+        <span class="font-label text-xs tracking-[0.22em] text-primary uppercase">Tratamientos</span>
+        <h2 class="font-headline text-4xl md:text-5xl mt-3 tracking-tight">Nuestra propuesta de cuidado</h2>
+      </div>
+      <div class="bg-primary/6 p-5 rounded-lg max-w-xs border-l-3 border-l-4 border-primary/40">
+        <p class="text-xs font-medium text-primary mb-1 uppercase tracking-wider">Cada sesión incluye</p>
+        <p class="text-on-surface-variant text-sm font-light leading-relaxed">Doble limpieza · exfoliación · principios activos · máscara técnica · fotoprotección</p>
       </div>
     </div>
 
-    <h1>Lola Cuts</h1>
-    <p class="subtitle">Peluquería &amp; Color · Resistencia</p>
-  </header>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-  <!-- SEPARADOR -->
-  <div class="divider">
-    <div class="divider-line"></div>
-    <div class="divider-diamond"></div>
-    <div class="divider-line"></div>
-  </div>
-
-  <!-- LINKS -->
-  <div class="links">
-
-    <a class="link-btn btn-primary" href="#">
-      <div class="link-btn-left">
-        <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        Reservar turno por WhatsApp
+      <!-- Card 1 -->
+      <div class="service-card bg-surface-container-low p-8 rounded-xl flex flex-col h-full border border-transparent hover:border-primary-container/30 hover:bg-surface-container-lowest hover:editorial-shadow reveal">
+        <div class="flex justify-between items-start mb-6">
+          <span class="font-label text-xs tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full uppercase">Más elegido</span>
+          <span class="font-headline text-2xl text-secondary">$12.000</span>
+        </div>
+        <h3 class="font-headline text-2xl mb-3">Limpieza Profunda</h3>
+        <p class="text-on-surface-variant font-light mb-6 flex-grow text-sm leading-relaxed">Eliminación de impurezas, extracciones y oxigenación celular profunda. Ideal para renovar texturas y dar claridad.</p>
+        <div class="flex items-center text-sm text-secondary gap-2 mb-6">
+          <span class="material-symbols-outlined text-base">schedule</span>
+          <span>90 min</span>
+        </div>
+        <a href="https://wa.me/5491100000000?text=Hola%20Sof%C3%ADa%2C%20quiero%20reservar%20una%20Limpieza%20Profunda" class="w-full py-3.5 rounded-full border border-primary text-primary font-medium text-sm text-center hover:bg-primary hover:text-on-primary transition-all duration-300 block">
+          Reservar este servicio
+        </a>
       </div>
-      <span class="link-arrow">→</span>
-    </a>
 
-    <a class="link-btn btn-secondary" href="#">
-      <div class="link-btn-left">
-        <svg class="link-icon" viewBox="0 0 24 24" fill="currentColor" style="color:var(--terracota)">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-        </svg>
-        Ver trabajos en Instagram
+      <!-- Card 2 — destacada -->
+      <div class="service-card bg-primary text-on-primary p-8 rounded-xl flex flex-col h-full editorial-shadow reveal" style="transition-delay:0.1s">
+        <div class="flex justify-between items-start mb-6">
+          <span class="font-label text-xs tracking-widest text-on-primary bg-on-primary/20 px-3 py-1 rounded-full uppercase">Renovación</span>
+          <span class="font-headline text-2xl text-on-primary/80">$9.500</span>
+        </div>
+        <h3 class="font-headline text-2xl mb-3">Peeling Renovador</h3>
+        <p class="text-on-primary/70 font-light mb-6 flex-grow text-sm leading-relaxed">Tratamiento con ácidos suaves para tratar manchas, líneas de expresión y mejorar la luminosidad global.</p>
+        <div class="flex items-center text-sm text-on-primary/60 gap-2 mb-6">
+          <span class="material-symbols-outlined text-base">schedule</span>
+          <span>60 min</span>
+        </div>
+        <a href="https://wa.me/5491100000000?text=Hola%20Sof%C3%ADa%2C%20quiero%20reservar%20un%20Peeling%20Renovador" class="w-full py-3.5 rounded-full border border-on-primary/30 text-on-primary font-medium text-sm text-center hover:bg-on-primary hover:text-primary transition-all duration-300 block">
+          Reservar este servicio
+        </a>
       </div>
-      <span class="link-arrow" style="color:var(--terracota)">↗</span>
-    </a>
 
-    <a class="link-btn btn-secondary" href="#">
-      <div class="link-btn-left">
-        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="color:var(--bark)">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/>
-        </svg>
-        Lista de precios
+      <!-- Card 3 -->
+      <div class="service-card bg-surface-container-low p-8 rounded-xl flex flex-col h-full border border-transparent hover:border-primary-container/30 hover:bg-surface-container-lowest reveal" style="transition-delay:0.2s">
+        <div class="flex justify-between items-start mb-6">
+          <span class="font-label text-xs tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full uppercase">Hidratación</span>
+          <span class="font-headline text-2xl text-secondary">$10.500</span>
+        </div>
+        <h3 class="font-headline text-2xl mb-3">Hidratación Hialurónica</h3>
+        <p class="text-on-surface-variant font-light mb-6 flex-grow text-sm leading-relaxed">Shock de hidratación para pieles deshidratadas o expuestas. Rellena líneas finas y devuelve jugosidad.</p>
+        <div class="flex items-center text-sm text-secondary gap-2 mb-6">
+          <span class="material-symbols-outlined text-base">schedule</span>
+          <span>75 min</span>
+        </div>
+        <a href="https://wa.me/5491100000000?text=Hola%20Sof%C3%ADa%2C%20quiero%20reservar%20Hidrataci%C3%B3n%20Hialur%C3%B3nica" class="w-full py-3.5 rounded-full border border-primary text-primary font-medium text-sm text-center hover:bg-primary hover:text-on-primary transition-all duration-300 block">
+          Reservar este servicio
+        </a>
       </div>
-      <span class="link-arrow">→</span>
-    </a>
 
-  </div>
-
-  <!-- HORARIOS -->
-  <div class="horarios">
-    <div class="horarios-title">Horarios</div>
-    <div class="horarios-row">
-      <span class="horarios-dia">Martes a Viernes</span>
-      <span class="horarios-hora">10:00 – 19:00</span>
     </div>
-    <div class="horarios-row">
-      <span class="horarios-dia">Sábados</span>
-      <span class="horarios-hora">09:00 – 14:00</span>
+  </section>
+
+  <!-- ── TESTIMONIOS ── -->
+  <section class="bg-surface-container-high py-20 md:py-28" id="testimonios">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+
+      <div class="flex flex-col md:flex-row gap-14 items-start">
+
+        <div class="md:w-1/3 reveal">
+          <span class="font-label text-xs tracking-[0.22em] text-secondary uppercase block mb-3">Testimonios</span>
+          <h2 class="font-headline text-4xl md:text-5xl leading-tight tracking-tight">Lo que nuestras <span class="italic text-primary">pacientes</span> dicen</h2>
+          <div class="mt-6 flex gap-0.5">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">star</span>
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'FILL' 1;">star</span>
+          </div>
+          <p class="text-sm text-on-surface-variant font-light mt-2">5.0 · +80 reseñas verificadas</p>
+        </div>
+
+        <div class="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <div class="bg-surface p-8 rounded-xl editorial-shadow grain reveal">
+            <div class="flex gap-0.5 mb-4">
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-body text-base italic leading-relaxed text-on-surface-variant mb-5">"Sofía tiene una mano increíble. Mi piel se ve radiante y el momento de la sesión es mi oasis de paz semanal."</p>
+            <p class="font-label font-bold text-xs tracking-widest text-primary">— MARÍA LUZ G.</p>
+          </div>
+
+          <div class="bg-surface p-8 rounded-xl editorial-shadow grain reveal md:mt-10" style="transition-delay:0.1s">
+            <div class="flex gap-0.5 mb-4">
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-body text-base italic leading-relaxed text-on-surface-variant mb-5">"Buscaba un diagnóstico honesto y lo encontré. Mi acné adulto mejoró notablemente siguiendo sus consejos."</p>
+            <p class="font-label font-bold text-xs tracking-widest text-primary">— VALENTINA R.</p>
+          </div>
+
+          <div class="bg-surface p-8 rounded-xl editorial-shadow grain col-span-1 md:col-span-2 reveal" style="transition-delay:0.15s">
+            <div class="flex gap-0.5 mb-4">
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;">star</span>
+            </div>
+            <p class="font-body text-base italic leading-relaxed text-on-surface-variant mb-5">"La limpieza con extracciones es súper delicada, no salí roja como me pasaba en otros lugares. Nunca más voy a otro sitio. ¡Súper recomendable!"</p>
+            <p class="font-label font-bold text-xs tracking-widest text-primary">— ANA CLARA M.</p>
+          </div>
+
+        </div>
+      </div>
     </div>
-    <div class="horarios-row">
-      <span class="horarios-dia">Lunes y Domingos</span>
-      <span class="horarios-hora">Cerrado</span>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="py-20 md:py-28 px-6 md:px-10 max-w-3xl mx-auto" id="faq">
+
+    <div class="text-center mb-14 reveal">
+      <span class="font-label text-xs tracking-[0.22em] text-secondary uppercase">Preguntas frecuentes</span>
+      <h2 class="font-headline text-4xl mt-3 tracking-tight">Todo lo que necesitás saber</h2>
     </div>
-    <p class="horarios-nota">✦ Solo con turno previo</p>
+
+    <div class="space-y-3 reveal">
+
+      <div class="faq-item bg-surface-container-low rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full p-6 md:p-7 flex justify-between items-center text-left group" onclick="toggleFaq(this)">
+          <h3 class="font-headline text-lg md:text-xl pr-4">¿Cuánto dura la sesión?</h3>
+          <span class="material-symbols-outlined text-primary faq-icon flex-shrink-0">expand_more</span>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 md:px-7 pb-6 text-on-surface-variant font-light leading-relaxed text-sm">Las sesiones varían según el tratamiento: la limpieza profunda dura 90 minutos, el peeling 60 y la hidratación 75. Nos tomamos el tiempo necesario para que tu piel absorba cada principio activo.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-surface-container-low rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full p-6 md:p-7 flex justify-between items-center text-left" onclick="toggleFaq(this)">
+          <h3 class="font-headline text-lg md:text-xl pr-4">¿Duele?</h3>
+          <span class="material-symbols-outlined text-primary faq-icon flex-shrink-0">expand_more</span>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 md:px-7 pb-6 text-on-surface-variant font-light leading-relaxed text-sm">Para nada. Priorizamos el bienestar. Incluso en tratamientos con extracciones o peelings, utilizamos técnicas que minimizan cualquier molestia. La experiencia tiene que ser placentera.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-surface-container-low rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full p-6 md:p-7 flex justify-between items-center text-left" onclick="toggleFaq(this)">
+          <h3 class="font-headline text-lg md:text-xl pr-4">¿Cómo reservo?</h3>
+          <span class="material-symbols-outlined text-primary faq-icon flex-shrink-0">expand_more</span>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 md:px-7 pb-6 text-on-surface-variant font-light leading-relaxed text-sm">Por WhatsApp directamente — es el método más rápido. También podés hacer clic en cualquier botón de "Reservar turno" de esta página. Te pedimos solo tu nombre y el tratamiento que te interesa.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-surface-container-low rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full p-6 md:p-7 flex justify-between items-center text-left" onclick="toggleFaq(this)">
+          <h3 class="font-headline text-lg md:text-xl pr-4">¿Con qué frecuencia tengo que hacer el tratamiento?</h3>
+          <span class="material-symbols-outlined text-primary faq-icon flex-shrink-0">expand_more</span>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 md:px-7 pb-6 text-on-surface-variant font-light leading-relaxed text-sm">Depende de tu tipo de piel y objetivo. En general, una vez al mes es suficiente para mantener resultados. En el diagnóstico inicial te armo un plan personalizado.</p>
+        </div>
+      </div>
+
+      <div class="faq-item bg-surface-container-low rounded-xl overflow-hidden">
+        <button class="faq-toggle w-full p-6 md:p-7 flex justify-between items-center text-left" onclick="toggleFaq(this)">
+          <h3 class="font-headline text-lg md:text-xl pr-4">¿Puedo ir con maquillaje?</h3>
+          <span class="material-symbols-outlined text-primary faq-icon flex-shrink-0">expand_more</span>
+        </button>
+        <div class="faq-body">
+          <p class="px-6 md:px-7 pb-6 text-on-surface-variant font-light leading-relaxed text-sm">Sí, podés venir con maquillaje. La doble limpieza inicial forma parte del protocolo de cada sesión. No necesitás prepararte especialmente.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ── -->
+  <section class="px-6 md:px-10 pb-20 max-w-7xl mx-auto">
+    <div class="bg-primary rounded-xl p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8 grain reveal">
+      <div>
+        <h2 class="font-headline text-3xl md:text-4xl text-on-primary leading-tight tracking-tight">¿Lista para empezar?</h2>
+        <p class="text-on-primary/65 font-light mt-2 max-w-md">El diagnóstico es gratuito y sin compromiso. Reservá tu turno hoy.</p>
+      </div>
+      <a href="https://wa.me/5491100000000?text=Hola%20Sof%C3%ADa%2C%20quiero%20reservar%20mi%20diagn%C3%B3stico%20gratuito" class="bg-surface text-primary px-10 py-4 rounded-full font-medium text-base hover:bg-primary-container transition-all duration-300 whitespace-nowrap flex-shrink-0 hover:scale-105 active:scale-95">
+        Reservar diagnóstico gratuito
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="w-full rounded-t-[2rem] bg-surface-container-high">
+  <div class="flex flex-col md:flex-row justify-between items-center px-10 py-14 gap-8 w-full max-w-7xl mx-auto">
+    <div class="space-y-2 text-center md:text-left">
+      <span class="font-headline italic text-2xl text-primary block">Sofía Marenzi</span>
+      <span class="font-label text-xs tracking-widest text-on-surface-variant uppercase">Cosmetología Profesional</span>
+    </div>
+    <div class="flex gap-8">
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label text-sm tracking-wide" href="https://instagram.com" target="_blank">Instagram</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label text-sm tracking-wide" href="https://wa.me/5491100000000" target="_blank">WhatsApp</a>
+      <a class="text-on-surface-variant hover:text-primary transition-colors font-label text-sm tracking-wide" href="#" target="_blank">Ubicación</a>
+    </div>
+    <p class="font-label text-xs tracking-wide text-on-surface-variant">© 2025 Sofía Marenzi</p>
   </div>
+</footer>
 
-  <!-- FOTO -->
-  <div class="foto-wrap">
-    <img
-      src="https://images.unsplash.com/photo-1560066984-138daaa4e8ba?w=800&q=80"
-      alt="Interior estudio de peluquería Lola Cuts"
-    />
-    <div class="foto-overlay"></div>
-    <span class="foto-caption">el estudio</span>
-  </div>
+<!-- ── WHATSAPP FLOATING ── -->
+<a
+  href="https://wa.me/5491100000000?text=Hola%20Sof%C3%ADa%2C%20quisiera%20consultar%20sobre%20tus%20tratamientos"
+  class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full editorial-shadow z-50 hover:scale-110 transition-transform flex items-center justify-center group"
+  target="_blank"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg fill="currentColor" height="28" width="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.888 11.888-11.888 3.176 0 6.161 1.237 8.404 3.48s3.481 5.229 3.481 8.405c0 6.555-5.332 11.89-11.888 11.89-2.015 0-3.991-.512-5.741-1.488l-6.243 1.71zm5.886-3.346c1.541.914 3.397 1.396 5.29 1.399 5.568 0 10.088-4.52 10.088-10.089 0-2.697-1.05-5.231-2.956-7.138s-4.441-2.956-7.138-2.956c-5.569 0-10.09 4.521-10.09 10.089 0 1.902.505 3.745 1.458 5.354l-.965 3.525 3.613-.984zm11.036-7.103c-.297-.149-1.758-.867-2.03-.966-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.011c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z"/>
+  </svg>
+  <!-- Tooltip -->
+  <span class="absolute right-16 bg-on-surface text-inverse-on-surface text-xs font-label px-3 py-1.5 rounded-full whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    Escribime por WhatsApp
+  </span>
+</a>
 
-  <!-- FOOTER -->
-  <footer>
-    <p class="footer-brand">© 2026 Lola Cuts · Diseño <a href="#">nadiaweb_</a></p>
-  </footer>
+<script>
+  // ── NAV scroll shadow ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add('nav-scrolled');
+    } else {
+      navbar.classList.remove('nav-scrolled');
+    }
+  });
 
-</div>
+  // ── Mobile menu ──
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    const icon = menuToggle.querySelector('.material-symbols-outlined');
+    icon.textContent = mobileMenu.classList.contains('open') ? 'close' : 'menu';
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    const icon = menuToggle.querySelector('.material-symbols-outlined');
+    icon.textContent = 'menu';
+  }
+
+  // ── FAQ accordion ──
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const body = item.querySelector('.faq-body');
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-body').classList.remove('open');
+    });
+
+    // Open clicked if it was closed
+    if (!isOpen) {
+      item.classList.add('open');
+      body.classList.add('open');
+    }
+  }
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
