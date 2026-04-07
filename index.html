@@ -156,6 +156,25 @@ tailwind.config = {
   }
 
   /* Floating dot decoration */
+  /* ── Scrollbar personalizada ── */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f5f4ed;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #4c644f;
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #273e2b;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4c644f #f5f4ed;
+  }
+
   .dot-grid {
     background-image: radial-gradient(circle, #4c644f22 1px, transparent 1px);
     background-size: 24px 24px;
